@@ -27,27 +27,19 @@ namespace UnitTestProject28
 
         public string Score()
         {
-            if (IsSameScore())
-            {
-                if (IsDeuce())
-                {
-                    return Deuce();
-                }
+            return IsSameScore()
+                ? IsDeuce() ? Deuce() : SameScore()
+                : IsGamePoint() ? AdvState() : LookupScore();
+        }
 
-                return SameScore();
-            }
-            else
-            {
-                if (IsGamePoint())
-                {
-                    if (IsAdv())
-                    {
-                        return AdvScore();
-                    }
-                    return AdvPlayer() + " Win";
-                }
-                return LookupScore();
-            }
+        private string AdvState()
+        {
+            return IsAdv() ? AdvScore() : WinScore();
+        }
+
+        private string WinScore()
+        {
+            return AdvPlayer() + " Win";
         }
 
         private bool IsDeuce()
