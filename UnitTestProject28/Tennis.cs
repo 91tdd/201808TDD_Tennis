@@ -8,6 +8,7 @@ namespace UnitTestProject28
 
         private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
         {
+            {0,"Love" },
             {1,"Fifteen" },
             {2,"Thirty" },
             {3,"Forty" },
@@ -17,19 +18,22 @@ namespace UnitTestProject28
 
         public string Score()
         {
-            if (_secondPlayerScore == 2)
+            if (IsSameScore())
             {
-                return "Love Thirty";
+                return "Love All";
             }
-            if (_secondPlayerScore == 1)
-            {
-                return "Love Fifteen";
-            }
-            if (_firstPlayerScore > 0)
-            {
-                return _scoreLookup[_firstPlayerScore] + " Love";
-            }
-            return "Love All";
+
+            return LookupScore();
+        }
+
+        private string LookupScore()
+        {
+            return _scoreLookup[_firstPlayerScore] + " " + _scoreLookup[_secondPlayerScore];
+        }
+
+        private bool IsSameScore()
+        {
+            return _firstPlayerScore == _secondPlayerScore;
         }
 
         public void FirstPlayerScore()
