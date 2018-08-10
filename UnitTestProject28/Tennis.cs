@@ -4,6 +4,7 @@ namespace UnitTestProject28
 {
     public class Tennis
     {
+        private readonly string _firstPlayerName;
         private int _firstPlayerScore;
 
         private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
@@ -16,6 +17,11 @@ namespace UnitTestProject28
 
         private int _secondPlayerScore;
 
+        public Tennis(string firstPlayerName)
+        {
+            _firstPlayerName = firstPlayerName;
+        }
+
         public string Score()
         {
             if (IsSameScore())
@@ -26,8 +32,17 @@ namespace UnitTestProject28
                 }
                 return _scoreLookup[_firstPlayerScore] + " All";
             }
-
-            return LookupScore();
+            else
+            {
+                if (_firstPlayerScore > 3 || _secondPlayerScore > 3)
+                {
+                    if (_firstPlayerScore - _secondPlayerScore == 1)
+                    {
+                        return $"{_firstPlayerName} Adv";
+                    }
+                }
+                return LookupScore();
+            }
         }
 
         private static string Deuce()
