@@ -20,14 +20,19 @@ namespace UnitTestProject28
         {
             if (IsSameScore())
             {
-                if (_firstPlayerScore == 3)
+                if (_firstPlayerScore >= 3)
                 {
-                    return "Deuce";
+                    return Deuce();
                 }
                 return _scoreLookup[_firstPlayerScore] + " All";
             }
 
             return LookupScore();
+        }
+
+        private static string Deuce()
+        {
+            return "Deuce";
         }
 
         private string LookupScore()

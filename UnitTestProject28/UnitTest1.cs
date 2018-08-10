@@ -74,6 +74,15 @@ namespace UnitTestProject28
             ScoreShouldBe(expected: "Deuce");
         }
 
+        [TestMethod]
+        public void Deuce_4_4()
+        {
+            GivenFirstPlayerScoreTimes(times: 4);
+            GivenSecondPlayerScoreTimes(times: 4);
+
+            ScoreShouldBe(expected: "Deuce");
+        }
+
         private void GivenSecondPlayerScoreTimes(int times)
         {
             for (int i = 0; i < times; i++)
