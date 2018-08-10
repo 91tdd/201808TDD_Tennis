@@ -29,27 +29,57 @@ namespace UnitTestProject28
         {
             if (IsSameScore())
             {
-                if (_firstPlayerScore >= 3)
+                if (IsDeuce())
                 {
                     return Deuce();
                 }
-                return _scoreLookup[_firstPlayerScore] + " All";
+
+                return SameScore();
             }
             else
             {
-                if (_firstPlayerScore > 3 || _secondPlayerScore > 3)
+                if (IsGamePoint())
                 {
-                    if (Math.Abs(_firstPlayerScore - _secondPlayerScore) == 1)
+                    if (IsAdv())
                     {
-                        var advPlayer = _firstPlayerScore > _secondPlayerScore
-                            ? _firstPlayerName
-                            : _secondPlayerName;
-
-                        return $"{advPlayer} Adv";
+                        return AdvScore();
                     }
                 }
                 return LookupScore();
             }
+        }
+
+        private bool IsDeuce()
+        {
+            return _firstPlayerScore >= 3;
+        }
+
+        private string SameScore()
+        {
+            return _scoreLookup[_firstPlayerScore] + " All";
+        }
+
+        private string AdvScore()
+        {
+            return $"{AdvPlayer()} Adv";
+        }
+
+        private bool IsGamePoint()
+        {
+            return _firstPlayerScore > 3 || _secondPlayerScore > 3;
+        }
+
+        private bool IsAdv()
+        {
+            return Math.Abs(_firstPlayerScore - _secondPlayerScore) == 1;
+        }
+
+        private string AdvPlayer()
+        {
+            var advPlayer = _firstPlayerScore > _secondPlayerScore
+                ? _firstPlayerName
+                : _secondPlayerName;
+            return advPlayer;
         }
 
         private static string Deuce()
