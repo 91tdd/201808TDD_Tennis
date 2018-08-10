@@ -48,6 +48,14 @@ namespace UnitTestProject28
             ScoreShouldBe(expected: "Love Thirty");
         }
 
+        [TestMethod]
+        public void Fifteen_All()
+        {
+            _tennis.FirstPlayerScore();
+            _tennis.SecondPlayerScore();
+            ScoreShouldBe(expected: "Fifteen All");
+        }
+
         private void GivenSecondPlayerScoreTimes(int times)
         {
             for (int i = 0; i < times; i++)
