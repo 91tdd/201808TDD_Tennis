@@ -13,8 +13,14 @@ namespace UnitTestProject28
             {3,"Forty" },
         };
 
+        private int _secondPlayerScore;
+
         public string Score()
         {
+            if (_secondPlayerScore == 1)
+            {
+                return "Love Fifteen";
+            }
             if (_firstPlayerScore > 0)
             {
                 return _scoreLookup[_firstPlayerScore] + " Love";
@@ -25,6 +31,11 @@ namespace UnitTestProject28
         public void FirstPlayerScore()
         {
             _firstPlayerScore++;
+        }
+
+        public void SecondPlayerScore()
+        {
+            _secondPlayerScore++;
         }
     }
 }
