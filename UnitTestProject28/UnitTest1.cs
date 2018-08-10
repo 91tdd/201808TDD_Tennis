@@ -110,6 +110,15 @@ namespace UnitTestProject28
             ScoreShouldBe(expected: "John Win");
         }
 
+        [TestMethod]
+        public void FirstPlayer_Win_4_0()
+        {
+            GivenFirstPlayerScoreTimes(times: 4);
+            GivenSecondPlayerScoreTimes(times: 0);
+
+            ScoreShouldBe(expected: "John Win");
+        }
+
         private void GivenSecondPlayerScoreTimes(int times)
         {
             for (int i = 0; i < times; i++)
