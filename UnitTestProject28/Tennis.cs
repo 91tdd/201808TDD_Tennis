@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace UnitTestProject28
 {
     public class Tennis
     {
         private readonly string _firstPlayerName;
+        private readonly string _secondPlayerName;
         private int _firstPlayerScore;
 
         private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
@@ -17,9 +19,10 @@ namespace UnitTestProject28
 
         private int _secondPlayerScore;
 
-        public Tennis(string firstPlayerName)
+        public Tennis(string firstPlayerName, string secondPlayerName)
         {
             _firstPlayerName = firstPlayerName;
+            _secondPlayerName = secondPlayerName;
         }
 
         public string Score()
@@ -36,9 +39,13 @@ namespace UnitTestProject28
             {
                 if (_firstPlayerScore > 3 || _secondPlayerScore > 3)
                 {
-                    if (_firstPlayerScore - _secondPlayerScore == 1)
+                    if (Math.Abs(_firstPlayerScore - _secondPlayerScore) == 1)
                     {
-                        return $"{_firstPlayerName} Adv";
+                        var advPlayer = _firstPlayerScore > _secondPlayerScore
+                            ? _firstPlayerName
+                            : _secondPlayerName;
+
+                        return $"{advPlayer} Adv";
                     }
                 }
                 return LookupScore();
