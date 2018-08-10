@@ -56,6 +56,15 @@ namespace UnitTestProject28
             ScoreShouldBe(expected: "Fifteen All");
         }
 
+        [TestMethod]
+        public void Thirty_All()
+        {
+            GivenFirstPlayerScoreTimes(times: 2);
+            GivenSecondPlayerScoreTimes(times: 2);
+
+            ScoreShouldBe(expected: "Thirty All");
+        }
+
         private void GivenSecondPlayerScoreTimes(int times)
         {
             for (int i = 0; i < times; i++)

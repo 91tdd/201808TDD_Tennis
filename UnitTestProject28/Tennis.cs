@@ -20,6 +20,10 @@ namespace UnitTestProject28
         {
             if (IsSameScore())
             {
+                if (_firstPlayerScore == 2)
+                {
+                    return "Thirty All";
+                }
                 if (_firstPlayerScore == 1)
                 {
                     return "Fifteen All";
