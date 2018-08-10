@@ -44,6 +44,7 @@ namespace UnitTestProject28
                     {
                         return AdvScore();
                     }
+                    return AdvPlayer() + " Win";
                 }
                 return LookupScore();
             }
